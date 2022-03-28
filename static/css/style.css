@@ -6,10 +6,8 @@
 }
 
 body {
-  font-family: "Poppins", sans-serif;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto";
   background: #cfcfcf;
-  overflow: hidden;
 }
 
 a {
@@ -141,7 +139,8 @@ a {
 
 /* Content */
 
-main {
+main,
+.display-content {
   display: flex;
   flex-direction: row;
 }
@@ -157,6 +156,8 @@ main {
   padding: 2em;
   width: 80%;
 }
+
+/* H1 is defined for ourself */
 .content .h1 {
   font-size: 2em;
   font-weight: 700;
@@ -175,14 +176,14 @@ main {
 
 /* Buttons */
 
-.button {
+.learn-btn {
   font-size: 16px;
   text-decoration: none;
   color: #000;
   cursor: pointer;
   border: 3px solid;
-  padding: 0.25em 1em;
-  box-shadow: -5px 5px 5px 0px rgba(0,0,0,0.75);
+  padding: 0.5em 1em;
+  box-shadow: -5px 5px 5px 0px rgba(0, 0, 0, 0.75);
   position: relative;
   top: 1em;
   user-select: none;
@@ -190,26 +191,18 @@ main {
   touch-action: manipulation;
 }
 
-.button:active {
+.learn-btn:active {
   box-shadow: 0px 0px 0px 0px;
   bottom: 5px;
   right: 5px;
 }
 
-@media (min-width: 768px) {
-  .button {
-    padding: 0.25em 0.75em;
-  }
-}
-
-
-.upload-img
-{
+.upload-img {
   /* border:2px solid black; */
-  background-color: #F9F3E5;
-  box-shadow: 10px 10px 2px 4px rgba(0,0,0,0.75);
+  background-color: #f9f3e5;
+  box-shadow: 10px 10px 2px 4px rgba(0, 0, 0, 0.75);
 
-  height: 50%;
+  height: 45%;
   width: 45%;
   margin: 0 auto;
 
@@ -217,21 +210,76 @@ main {
   top: 16%;
 
   padding: 2em;
-  border-radius:24px;
-  
+  border-radius: 24px;
 }
 
-#link
-{
-  font-family: "Poppins", sans-serif;
+.upload-img p {
+  font-size: 1.5em;
+  text-align: center;
+}
+.upload-img img {
+  margin: 5% 40%;
+}
+#link {
+  font-family: "Roboto";
   font-size: 0.8em;
 
   border: 2px solid black;
   width: 80%;
   padding: 10px;
+  margin-top: 1.5em;
 
   position: relative;
-  /* left: 10%; */
   top: 15%;
-  border-radius:24px;
+  border-radius: 24px;
+}
+
+.choose-file {
+  border: 2px solid black;
+  width: 90%;
+  padding: 1em 0em 1em 2em;
+  margin: 1.45em 0.4em;
+
+  border-radius: 2em;
+  background-color: #fbeee0;
+  transition: 1s;
+}
+
+.submit-btn {
+  background-color: #fbeee0;
+  border: 2px solid #422800;
+  border-radius: 2em;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: inline-block;
+
+  position: relative;
+  left: 30%;
+
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0.5em 1em;
+  margin-top: 0.1em;
+
+  text-align: center;
+  touch-action: manipulation;
+}
+
+.submit-btn:hover {
+  background-color: #fff;
+}
+
+.submit-btn:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+.results {
+  margin: 4em;
+  padding: 2em;
+}
+
+.sub-results {
+  margin-top: 2em;
 }

@@ -4,19 +4,18 @@ import tensorflow_hub as hub
 import numpy as np
 import pandas as pd
 from geopy.geocoders import Nominatim
-
+from werkzeug.utils import secure_filename
 from flask import Flask, render_template, redirect, request
 
 
 app = Flask(__name__)
 
-
-
 model_url = 'https://tfhub.dev/google/on_device_vision/classifier/landmarks_classifier_asia_V1/1'
 labels = 'landmarks_classifier_asia_V1_label_map.csv'
 df = pd.read_csv(labels)
 labels = dict(zip(df.id, df.name))
-
+global monu_details 
+monu_details = ["-","-","-"]
 
 def image_processing(image):
 
@@ -50,10 +49,22 @@ def monu(image):
     return [monu_name, monu_locate]
 
 @app.route('/')
-
 def index():
-    lst = monu("download.jpg")
-    return render_template("index.html", monu_list = lst)
+    return render_template("index.html",monu_details = monu_details)
+
+
+@app.route('/upload', methods = ['GET', 'POST'])
+def upload_file():
+    if request.method == 'POST':
+        content = request.files['file']
+        content.save(secure_filename(content.filename))
+        try:
+            monu_details = monu(content)
+            return render_template("index.html", monu_details = monu_details)
+        except:
+            return "There was an issue uplaoding the file. "
+    return render_template("index.html", monu_details = monu_details)
 
 if __name__ == '__main__':
     app.run(debug = True)
+

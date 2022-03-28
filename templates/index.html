@@ -5,10 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="/static/css/style.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap"
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link rel="stylesheet" href="/static/css/style.css" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap"
       rel="stylesheet"
     />
 
@@ -48,21 +54,73 @@
           <p class="h3">
             Identify and get the exact location of 98000+ Monuments in Asia.
           </p>
-          <button class="button" role="button">Learn More.</button>
+          <button class="learn-btn" role="button">Learn More.</button>
         </div>
 
         <img src="/static/arrow.png" alt="" id="upload-here" />
       </section>
 
       <section class="content">
+        <!-- <div class="upload-img"> 
+          <h1>
+            Use
+            <a
+              href="https://www.imgur.com/upload"
+              style="color: brown"
+              target="_blank"
+              >Imgur</a
+            >
+            to generate a link for your image & paste the link here.
+          </h1>
+
+          <form action="/" method="post">
+            <input type="text" name="link" id="link" class=".upload-img" />
+
+            <button class="submit-btn" value="add link" class="submit">
+              submit
+            </button>
+          </form>
+        </div>-->
+
         <div class="upload-img">
-          <h1>Use <a href="https://www.imgur.com/upload" style="color: brown;" target="_blank">Imgur</a> to generate a link for your image & paste the link here.  </h1>
+          <img src="{{ url_for('static', filename='cloud.png') }}" alt=" " />
 
-          <input type="text" id="link">
-          
+          <!-- <img src="/static/cloud.png" alt="" /> -->
+          <p>Upload the image here.</p>
 
+          <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" class="choose-file" />
+
+            <button class="submit-btn">Submit</button>
+          </form>
         </div>
       </section>
     </main>
+
+    <div class="display-content" id = "results">
+      <section class="content">
+        <div class="results">
+          <div class="sub-results">
+            <p class="h1">Predicted landmark is :-</p>
+            <p>{{monu_details[0]}}</p>
+          </div>
+          <div class="sub-results">
+            <p class="h1">Address</p>
+            <p>{{monu_details[1][0]}}</p>
+          </div>
+          <div class="sub-results">
+            <p class="h1">Latitude and Longitude</p>
+            <p>{{monu_details[1][1]}}</p>
+            <p>{{monu_details[1][2]}}</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content">
+        <div class="results">
+          <p class="h1">Map for</p>
+        </div>
+      </section>
+    </div>
   </body>
 </html>
