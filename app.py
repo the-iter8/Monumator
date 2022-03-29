@@ -3,10 +3,11 @@ import tensorflow as tf
 import tensorflow_hub as hub
 import numpy as np
 import pandas as pd
+import folium
+
 from geopy.geocoders import Nominatim
 from werkzeug.utils import secure_filename
 from flask import Flask, render_template, redirect, request
-
 
 app = Flask(__name__)
 
@@ -60,10 +61,19 @@ def upload_file():
         content.save(secure_filename(content.filename))
         try:
             monu_details = monu(content)
+            start_coords = (monu_details[1][1], monu_details[1][2])
+            folium_map = folium.Map(location=start_coords, zoom_start=14)
+            folium_map.save('templates/map.html')
             return render_template("index.html", monu_details = monu_details)
         except:
-                return render_template("error.html")
+            return render_template("error.html")
     return render_template("index.html", monu_details = monu_details)
+
+
+
+@app.route('/map', methods = ['GET', 'POST'])
+def map_init():
+    return render_template("map.html")
 
 if __name__ == '__main__':
     app.run(debug = True)
