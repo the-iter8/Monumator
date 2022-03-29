@@ -1,9 +1,9 @@
 import PIL
+import folium
 import tensorflow as tf
 import tensorflow_hub as hub
 import numpy as np
 import pandas as pd
-import folium
 
 from geopy.geocoders import Nominatim
 from werkzeug.utils import secure_filename
@@ -40,8 +40,6 @@ def image_processing(image):
 def get_map(loc):
     geolocator = Nominatim(user_agent="Your_Name")
     location = geolocator.geocode(loc)
-
-    #returns the address of the place, latitude and the longitude.
     return [location.address,location.latitude, location.longitude]
 
 def monu(image):

@@ -25,7 +25,7 @@
       <div class="nav-wrapper">
         <!-- Navbar Logo -->
         <div class="logo">
-          <!-- <img src="/static/logo.png" alt="" /> -->
+          <img src="{{ url_for('static', filename='logo.png') }}" alt=" " />
         </div>
 
         <!-- Navbar Links -->
@@ -52,7 +52,9 @@
           <p class="h3">
             Identify and get the exact location of 98000+ Monuments in Asia.
           </p>
-          <button class="learn-btn" role="button">Learn More.</button>
+          <a href="https://tfhub.dev/" target="_blank"
+            ><button class="learn-btn" role="button">Learn More.</button></a
+          >
         </div>
 
         <img src="/static/arrow.png" alt="" id="upload-here" />
@@ -74,6 +76,8 @@
       </section>
     </main>
 
+    
+
     <div class="display-content" id="results">
       <section class="content">
         <div class="results">
@@ -93,7 +97,6 @@
           <div class="sub-results">
             <p class="h1">Map for {{monu_details[0]}}</p>
 
-
             <form action="/map" method="post" enctype="multipart/form-data">
               <button class="learn-more">
                 <span class="circle" aria-hidden="true">
@@ -102,9 +105,6 @@
                 <span class="button-text">Show on Map</span>
               </button>
             </form>
-
-
-
           </div>
 
           <div class="sub-results">
