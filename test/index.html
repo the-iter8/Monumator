@@ -4,19 +4,28 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script>
-      UPLOADCARE_PUBLIC_KEY = "3e55aa88cb2da6f9c63b";
-    </script>
-    <script
-      src="https://ucarecdn.com/libs/widget/3.7.4/uploadcare.full.min.js"
-      charset="utf-8"
-    ></script>
-
     <title>Document</title>
   </head>
   <body>
-      
-    <input type="hidden" role="uploadcare-uploader" name="download" data-images-only=”true” />
-    <!-- <iframe src="https://imgbb.com/" frameborder="0"></iframe> -->
+    <div id="map"></div>
+    
+
+    <script>
+      function initmap() {
+        // let Latitude = {{monu_details[1][1]}};
+        // let Longitude = {{monu_details[1][2]}};
+        var location = { lat: 27.173891, lng: 78.042068 };
+        var map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 4,
+          center: location,
+        });
+      }
+    </script>
+
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3cI7mFoyMOV6OpQHgDgtJ_Wp-vIS2_RM&callback=initMap"
+    ></script>
   </body>
 </html>

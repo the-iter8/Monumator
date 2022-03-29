@@ -97,7 +97,7 @@
       </section>
     </main>
 
-    <div class="display-content" id = "results">
+    <div class="display-content" id="results">
       <section class="content">
         <div class="results">
           <div class="sub-results">
@@ -105,20 +105,36 @@
             <p>{{monu_details[0]}}</p>
           </div>
           <div class="sub-results">
-            <p class="h1">Address</p>
+            <p class="h1">Address to the Monument-</p>
             <p>{{monu_details[1][0]}}</p>
           </div>
           <div class="sub-results">
             <p class="h1">Latitude and Longitude</p>
-            <p>{{monu_details[1][1]}}</p>
-            <p>{{monu_details[1][2]}}</p>
+            <p>Latitude - {{monu_details[1][1]}}</p>
+            <p>Longitude - {{monu_details[1][2]}}</p>
           </div>
         </div>
       </section>
 
       <section class="content">
         <div class="results">
-          <p class="h1">Map for</p>
+          <p class="h1">Map for {{monu_details[0]}}</p>
+
+          <div class="map"></div>
+          <iframe
+            width="600"
+            height="450"
+            style="border: 0"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA-_Py7RAaQYsH3AD-JVBSGtoWoiBeT33I
+    &q=Space+Needle,Seattle+WA"
+          >
+          </iframe>
+
+
+          {{}}
         </div>
       </section>
     </div>

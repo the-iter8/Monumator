@@ -62,7 +62,7 @@ def upload_file():
             monu_details = monu(content)
             return render_template("index.html", monu_details = monu_details)
         except:
-            return "There was an issue uplaoding the file. "
+                return render_template("error.html")
     return render_template("index.html", monu_details = monu_details)
 
 if __name__ == '__main__':
